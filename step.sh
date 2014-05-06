@@ -11,4 +11,4 @@ curl -v --user "api:$MAILGUN_API_KEY" \
   -F from="Concrete Mailgun Step <postmaster@$MAILGUN_DOMAIN>" \
   -F to="$MAILGUN_SEND_TO" \
   -F subject="$MAILGUN_EMAIL_SUBJECT" \
-  -F html="$MAILGUN_EMAIL_MESSAGE"
+  --form-string html="$MAILGUN_EMAIL_MESSAGE"
