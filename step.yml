@@ -1,0 +1,20 @@
+name: Email with Mailgun
+description: |
+  Send emails with Mailgun https://mailgun.com
+
+outputs:
+  -
+    title: Mailgun API Key
+    mapped_to: MAILGUN_API_KEY
+  -
+    title: Mailgun Domain
+    mapped_to: MAILGUN_DOMAIN
+  -
+    title: Send To emails (comma separated email address list)
+    mapped_to: MAILGUN_SEND_TO
+  -
+    title: Email Subject
+    mapped_to: MAILGUN_EMAIL_SUBJECT
+  -
+    title: Email Message (can be HTML)
+    mapped_to: MAILGUN_EMAIL_MESSAGE
