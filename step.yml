@@ -1,8 +1,9 @@
-name: Email with Mailgun
+name: Send Email with Mailgun
 description: |
-  Send emails with Mailgun https://mailgun.com
+  Send email with Mailgun ( https://mailgun.com ).
+  With Mailgun you can send 10,000 emails/month, 300 emails/day for free.
 
-outputs:
+inputs:
   -
     title: Mailgun API Key
     mapped_to: MAILGUN_API_KEY
