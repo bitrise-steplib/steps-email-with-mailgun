@@ -113,11 +113,11 @@ test_results_error_count=0
   test_env_cleanup
 
   # Set env vars
-  MAILGUN_API_KEY="asd1234"
-  MAILGUN_DOMAIN="dsa4321"
-  MAILGUN_SEND_TO="bitfall@icloud.com"
-  MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
-  MAILGUN_EMAIL_MESSAGE="It works from tests!"
+  export MAILGUN_API_KEY="asd1234"
+  export MAILGUN_DOMAIN="dsa4321"
+  export MAILGUN_SEND_TO="bitfall@icloud.com"
+  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
   # All of the required env vars should exist
   expect_success "MAILGUN_API_KEY environment variable should be set" is_not_unset_or_empty "$MAILGUN_API_KEY"
@@ -127,10 +127,7 @@ test_results_error_count=0
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
   # Send email request
-  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
-    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
-    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
-    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command ./step.sh
 )
 test_result=$?
 inspect_test_result $test_result
@@ -144,10 +141,10 @@ inspect_test_result $test_result
 	test_env_cleanup
 
   # Set env var
-  MAILGUN_DOMAIN="dsa4321"
-  MAILGUN_SEND_TO="bitfall@icloud.com"
-  MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
-  MAILGUN_EMAIL_MESSAGE="It works from tests!"
+  export MAILGUN_DOMAIN="dsa4321"
+  export MAILGUN_SEND_TO="bitfall@icloud.com"
+  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
    # All of the required env vars should exist except MAILGUN_API_KEY
   expect_error "MAILGUN_API_KEY environment variable should NOT be set" is_not_unset_or_empty "$MAILGUN_API_KEY"
@@ -157,10 +154,7 @@ inspect_test_result $test_result
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
   # Send email request
-  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
-    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
-    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
-    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command ./step.sh
 )
 test_result=$?
 inspect_test_result $test_result
@@ -174,10 +168,10 @@ inspect_test_result $test_result
 	test_env_cleanup
 
   # Set env var
-  MAILGUN_API_KEY="asd1234"
-  MAILGUN_SEND_TO="bitfall@icloud.com"
-  MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
-  MAILGUN_EMAIL_MESSAGE="It works from tests!"
+  export MAILGUN_API_KEY="asd1234"
+  export MAILGUN_SEND_TO="bitfall@icloud.com"
+  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
    # All of the required env vars should exist except MAILGUN_DOMAIN
   expect_success "MAILGUN_API_KEY environment variable should be set" is_not_unset_or_empty "$MAILGUN_API_KEY"
@@ -187,10 +181,7 @@ inspect_test_result $test_result
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
   # Send email request
-  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
-    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
-    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
-    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command ./step.sh
 )
 test_result=$?
 inspect_test_result $test_result
@@ -204,10 +195,10 @@ inspect_test_result $test_result
 	test_env_cleanup
 
   # Set env var
-  MAILGUN_API_KEY="asd1234"
-  MAILGUN_DOMAIN="dsa4321"
-  MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
-  MAILGUN_EMAIL_MESSAGE="It works from tests!"
+  export MAILGUN_API_KEY="asd1234"
+  export MAILGUN_DOMAIN="dsa4321"
+  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
    # All of the required env vars should exist except MAILGUN_SEND_TO
   expect_success "MAILGUN_API_KEY environment variable should be set" is_not_unset_or_empty "$MAILGUN_API_KEY"
@@ -217,10 +208,7 @@ inspect_test_result $test_result
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
   # Send email request
-  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
-    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
-    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
-    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command ./step.sh
 )
 test_result=$?
 inspect_test_result $test_result
@@ -237,10 +225,10 @@ inspect_test_result $test_result
   test_env_cleanup
 
   # Set env var
-  MAILGUN_API_KEY="asd1234"
-  MAILGUN_DOMAIN="dsa4321"
-  MAILGUN_SEND_TO="asd1234"
-  MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_API_KEY="asd1234"
+  export MAILGUN_DOMAIN="dsa4321"
+  export MAILGUN_SEND_TO="asd1234"
+  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
 
    # All of the required env vars should exist except MAILGUN_SEND_TO
   expect_success "MAILGUN_API_KEY environment variable should be set" is_not_unset_or_empty "$MAILGUN_API_KEY"
@@ -250,10 +238,7 @@ inspect_test_result $test_result
   expect_error "MAILGUN_EMAIL_MESSAGE environment variable should NOT be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
   # Send email request
-  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
-    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
-    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
-    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command ./step.sh
 )
 test_result=$?
 inspect_test_result $test_result

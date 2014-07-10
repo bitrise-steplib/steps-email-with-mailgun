@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo
 echo "MAILGUN_API_KEY: $MAILGUN_API_KEY"
 echo "MAILGUN_DOMAIN: $MAILGUN_DOMAIN"
 echo "MAILGUN_SEND_TO: $MAILGUN_SEND_TO"
@@ -14,6 +15,7 @@ res=$(curl -is --user "api:$MAILGUN_API_KEY" \
   -F subject="$MAILGUN_EMAIL_SUBJECT" \
   --form-string html="$MAILGUN_EMAIL_MESSAGE")
 
+echo
 echo " --- Result ---"
 echo "$res"
 echo " --------------"
