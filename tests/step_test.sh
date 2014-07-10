@@ -99,9 +99,6 @@ function print_new_test {
 # -----------------
 # --- Run tests ---
 
-function run_target_command { 
-  print_and_do_command eval "./step.sh"
-}
 
 echo "Starting tests..."
 
@@ -129,8 +126,11 @@ test_results_error_count=0
   expect_success "MAILGUN_EMAIL_SUBJECT environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_SUBJECT"
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
-  # Deploy the file
-  expect_error "The command should be called, but should not complete sucessfully" run_target_command
+  # Send email request
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
+    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
+    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
+    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
 )
 test_result=$?
 inspect_test_result $test_result
@@ -156,8 +156,11 @@ inspect_test_result $test_result
   expect_success "MAILGUN_EMAIL_SUBJECT environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_SUBJECT"
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
-  # Deploy the file
-  expect_error "The command should exit with error" run_target_command
+  # Send email request
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
+    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
+    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
+    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
 )
 test_result=$?
 inspect_test_result $test_result
@@ -183,8 +186,11 @@ inspect_test_result $test_result
   expect_success "MAILGUN_EMAIL_SUBJECT environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_SUBJECT"
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
-  # Deploy the file
-  expect_error "The command should exit with error" run_target_command
+  # Send email request
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
+    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
+    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
+    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
 )
 test_result=$?
 inspect_test_result $test_result
@@ -210,8 +216,11 @@ inspect_test_result $test_result
   expect_success "MAILGUN_EMAIL_SUBJECT environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_SUBJECT"
 	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
-  # Deploy the file
-  expect_error "The command should exit with error" run_target_command
+  # Send email request
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
+    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
+    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
+    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
 )
 test_result=$?
 inspect_test_result $test_result
@@ -240,8 +249,11 @@ inspect_test_result $test_result
   expect_success "MAILGUN_EMAIL_SUBJECT environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_SUBJECT"
   expect_error "MAILGUN_EMAIL_MESSAGE environment variable should NOT be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
 
-  # Deploy the file
-  expect_error "The command should exit with error" run_target_command
+  # Send email request
+  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command eval \
+    "MAILGUN_API_KEY=\"$MAILGUN_API_KEY\" \
+    MAILGUN_DOMAIN=\"$MAILGUN_DOMAIN\" MAILGUN_SEND_TO=\"$MAILGUN_SEND_TO\" \
+    MAILGUN_EMAIL_SUBJECT=\"$MAILGUN_EMAIL_SUBJECT\" MAILGUN_EMAIL_MESSAGE=\"$MAILGUN_EMAIL_MESSAGE\" ./step.sh"
 )
 test_result=$?
 inspect_test_result $test_result
