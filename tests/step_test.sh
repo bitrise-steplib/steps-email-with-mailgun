@@ -105,33 +105,6 @@ echo "Starting tests..."
 test_results_success_count=0
 test_results_error_count=0
 
-# [TEST] Call the command with the minimum required parameters given, 
-# it should execute, but curl should return with authentication error
-# 
-(
-  print_new_test
-  test_env_cleanup
-
-  # Set env vars
-  export MAILGUN_API_KEY="asd1234"
-  export MAILGUN_DOMAIN="dsa4321"
-  export MAILGUN_SEND_TO="bitfall@icloud.com"
-  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
-  export MAILGUN_EMAIL_MESSAGE="It works from tests!"
-
-  # All of the required env vars should exist
-  expect_success "MAILGUN_API_KEY environment variable should be set" is_not_unset_or_empty "$MAILGUN_API_KEY"
-  expect_success "MAILGUN_DOMAIN environment variable should be set" is_not_unset_or_empty "$MAILGUN_DOMAIN"
-  expect_success "MAILGUN_SEND_TO environment variable should be set" is_not_unset_or_empty "$MAILGUN_SEND_TO"
-  expect_success "MAILGUN_EMAIL_SUBJECT environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_SUBJECT"
-	expect_success "MAILGUN_EMAIL_MESSAGE environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
-
-  # Send email request
-  expect_error "The command should be called, but should not complete sucessfully" print_and_do_command ./step.sh
-)
-test_result=$?
-inspect_test_result $test_result
-
 
 # [TEST] Call the command with MAILGUN_API_KEY not set, 
 # it should raise an error message and exit
