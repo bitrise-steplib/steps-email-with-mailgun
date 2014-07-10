@@ -83,7 +83,7 @@ function is_not_unset_or_empty {
   fi
 }
 
-function test_cleanup {
+function test_env_cleanup {
   unset MAILGUN_API_KEY
 	unset MAILGUN_DOMAIN
 	unset MAILGUN_SEND_TO
@@ -113,8 +113,7 @@ test_results_error_count=0
 # 
 (
   print_new_test
-
-  test_cleanup
+  test_env_cleanup
 
   # Set env vars
   MAILGUN_API_KEY="asd1234"
@@ -132,8 +131,6 @@ test_results_error_count=0
 
   # Deploy the file
   expect_error "The command should be called, but should not complete sucessfully" run_target_command
-
-  test_cleanup
 )
 test_result=$?
 inspect_test_result $test_result
@@ -144,8 +141,7 @@ inspect_test_result $test_result
 # 
 (
   print_new_test
-
-	test_cleanup
+	test_env_cleanup
 
   # Set env var
   MAILGUN_DOMAIN="dsa4321"
@@ -162,8 +158,6 @@ inspect_test_result $test_result
 
   # Deploy the file
   expect_error "The command should exit with error" run_target_command
-
-  test_cleanup
 )
 test_result=$?
 inspect_test_result $test_result
@@ -174,8 +168,7 @@ inspect_test_result $test_result
 # 
 (
   print_new_test
-
-	test_cleanup
+	test_env_cleanup
 
   # Set env var
   MAILGUN_API_KEY="asd1234"
@@ -192,8 +185,6 @@ inspect_test_result $test_result
 
   # Deploy the file
   expect_error "The command should exit with error" run_target_command
-
-  test_cleanup
 )
 test_result=$?
 inspect_test_result $test_result
@@ -204,8 +195,7 @@ inspect_test_result $test_result
 # 
 (
   print_new_test
-
-	test_cleanup
+	test_env_cleanup
 
   # Set env var
   MAILGUN_API_KEY="asd1234"
@@ -222,11 +212,43 @@ inspect_test_result $test_result
 
   # Deploy the file
   expect_error "The command should exit with error" run_target_command
-
-  test_cleanup
 )
 test_result=$?
 inspect_test_result $test_result
+
+
+# an email can be sent without subject but it is not recommended
+
+
+# [TEST] Call the command with MAILGUN_EMAIL_MESSAGE not set, 
+# it should raise an error message and exit
+# 
+(
+  print_new_test
+  test_env_cleanup
+
+  # Set env var
+  MAILGUN_API_KEY="asd1234"
+  MAILGUN_DOMAIN="dsa4321"
+  MAILGUN_SEND_TO="asd1234"
+  MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+
+   # All of the required env vars should exist except MAILGUN_SEND_TO
+  expect_success "MAILGUN_API_KEY environment variable should be set" is_not_unset_or_empty "$MAILGUN_API_KEY"
+  expect_success "MAILGUN_DOMAIN environment variable should be set" is_not_unset_or_empty "$MAILGUN_DOMAIN"
+  expect_success "MAILGUN_SEND_TO environment variable should be set" is_not_unset_or_empty "$MAILGUN_SEND_TO"
+  expect_success "MAILGUN_EMAIL_SUBJECT environment variable should be set" is_not_unset_or_empty "$MAILGUN_EMAIL_SUBJECT"
+  expect_error "MAILGUN_EMAIL_MESSAGE environment variable should NOT be set" is_not_unset_or_empty "$MAILGUN_EMAIL_MESSAGE"
+
+  # Deploy the file
+  expect_error "The command should exit with error" run_target_command
+)
+test_result=$?
+inspect_test_result $test_result
+
+
+#final cleanup
+test_env_cleanup
 
 # --------------------
 # --- Test Results ---
