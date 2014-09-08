@@ -116,7 +116,7 @@ test_results_error_count=0
   # Set env var
   export MAILGUN_DOMAIN="dsa4321"
   export MAILGUN_SEND_TO="bitfall@icloud.com"
-  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_SUBJECT="Bitrise Email Test"
   export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
    # All of the required env vars should exist except MAILGUN_API_KEY
@@ -143,7 +143,7 @@ inspect_test_result $test_result
   # Set env var
   export MAILGUN_API_KEY="asd1234"
   export MAILGUN_SEND_TO="bitfall@icloud.com"
-  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_SUBJECT="Bitrise Email Test"
   export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
    # All of the required env vars should exist except MAILGUN_DOMAIN
@@ -170,7 +170,7 @@ inspect_test_result $test_result
   # Set env var
   export MAILGUN_API_KEY="asd1234"
   export MAILGUN_DOMAIN="dsa4321"
-  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_SUBJECT="Bitrise Email Test"
   export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
    # All of the required env vars should exist except MAILGUN_SEND_TO
@@ -201,7 +201,7 @@ inspect_test_result $test_result
   export MAILGUN_API_KEY="asd1234"
   export MAILGUN_DOMAIN="dsa4321"
   export MAILGUN_SEND_TO="asd1234"
-  export MAILGUN_EMAIL_SUBJECT="Concrete Email Test"
+  export MAILGUN_EMAIL_SUBJECT="Bitrise Email Test"
 
    # All of the required env vars should exist except MAILGUN_SEND_TO
   expect_success "MAILGUN_API_KEY environment variable should be set" is_not_unset_or_empty "$MAILGUN_API_KEY"

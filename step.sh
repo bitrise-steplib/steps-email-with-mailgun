@@ -65,7 +65,7 @@ fi
 
 res=$(curl -is --user "api:$MAILGUN_API_KEY" \
   https://api.mailgun.net/v2/$MAILGUN_DOMAIN/messages \
-  -F from="Concrete Mailgun Step <postmaster@$MAILGUN_DOMAIN>" \
+  -F from="Bitrise Mailgun Step <postmaster@$MAILGUN_DOMAIN>" \
   -F to="$MAILGUN_SEND_TO" \
   -F subject="$MAILGUN_EMAIL_SUBJECT" \
   --form-string html="$MAILGUN_EMAIL_MESSAGE")
