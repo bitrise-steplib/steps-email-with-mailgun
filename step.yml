@@ -42,5 +42,5 @@ inputs:
     title: "Email Message"
     description: |
       The message can be HTML.
-    is_expand: false
+    is_expand: true
     is_required: true
