@@ -115,7 +115,7 @@ test_results_error_count=0
 
   # Set env var
   export MAILGUN_DOMAIN="dsa4321"
-  export MAILGUN_SEND_TO="bitfall@icloud.com"
+  export MAILGUN_SEND_TO="some@email.com"
   export MAILGUN_EMAIL_SUBJECT="Bitrise Email Test"
   export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
@@ -142,7 +142,7 @@ inspect_test_result $test_result
 
   # Set env var
   export MAILGUN_API_KEY="asd1234"
-  export MAILGUN_SEND_TO="bitfall@icloud.com"
+  export MAILGUN_SEND_TO="some@email.com"
   export MAILGUN_EMAIL_SUBJECT="Bitrise Email Test"
   export MAILGUN_EMAIL_MESSAGE="It works from tests!"
 
