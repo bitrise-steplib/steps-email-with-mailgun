@@ -1,0 +1,12 @@
+{
+	"dep_locks": [
+		{
+			"url": "https://github.com/gkiki90/go-markdown-log.git",
+			"revision": "0207099907ce78217340d55ab7a94d7de264b5fe"
+		},
+		{
+			"url": "https://github.com/mailgun/mailgun-go.git",
+			"revision": "9578dc67692294bb7e2a6f4b15dd18c97af19440"
+		}
+	]
+}
