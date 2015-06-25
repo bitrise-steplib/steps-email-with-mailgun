@@ -164,12 +164,14 @@ func errorMessageToOutput(msg string) error {
 	return markdownlog.ErrorSectionToOutput(message)
 }
 
-func successMessageToOutput(from, roomId, msg string) error {
+func successMessageToOutput(from, to, subject, msg string) error {
 	message := "Message successfully sent!\n"
 	message = message + "From:\n"
 	message = message + from + "\n"
-	message = message + "To Romm:\n"
-	message = message + roomId + "\n"
+	message = message + "To:\n"
+	message = message + to + "\n"
+	message = message + "Subject:\n"
+	message = message + subject + "\n"
 	message = message + "Message:\n"
 	message = message + msg
 
@@ -240,4 +242,6 @@ func main() {
 	if err := c.PostMessage(req); err != nil {
 		fmt.Println("Failed to send: ", err)
 	}
+
+	successMessageToOutput(FROM_NAME, toName, subject, message)
 }
