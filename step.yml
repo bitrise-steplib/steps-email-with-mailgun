@@ -33,14 +33,44 @@ inputs:
     is_expand: false
     is_required: true
   -
+    mapped_to: MAILGUN_ERROR_SEND_TO
+    title: "Send To emails - if the build failed"
+    description: |
+      Comma separated email address list.
+    is_expand: false
+    is_required: false
+  -
     mapped_to: MAILGUN_EMAIL_SUBJECT
     title: "Email Subject"
     is_expand: false
     is_required: true
+  -
+    mapped_to: MAILGUN_ERROR_EMAIL_SUBJECT
+    title: "Email Subject - if the build failed"
+    is_expand: false
+    is_required: false
   -
     mapped_to: MAILGUN_EMAIL_MESSAGE
     title: "Email Message"
     description: |
       The message can be HTML.
     is_expand: true
+    is_required: true
+  -
+    mapped_to: MAILGUN_ERROR_EMAIL_MESSAGE
+    title: "Email Message - if the build failed"
+    description: |
+      The message can be HTML.
+    is_expand: true
+    is_required: false
+  -
+    mapped_to: MAILGUN_MESSAGE_TYPE
+    title: "Email Message - if the build failed"
+    description: |
+      The message can be HTML.
+    value_options:
+      - html
+      - text
+    value: text
+    is_expand: false
     is_required: true
