@@ -144,14 +144,15 @@ func main() {
 	if response.StatusCode == 200 {
 		successMessageToOutput(FROM_NAME, toName, subject, message)
 	} else {
-		fmt.Println("Status code:", response.Status)
-
 		var data map[string]interface{}
 		bodyBytes, _ := ioutil.ReadAll(response.Body)
 		err := json.Unmarshal(bodyBytes, &data)
 		if err == nil {
 			fmt.Println("Response:", data)
 		}
+
+		errorMsg := fmt.Sprintf("Status code: %s Body: %s", response.StatusCode, response.Body)
+		errorMessageToOutput(errorMsg)
 
 		os.Exit(1)
 	}
