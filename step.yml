@@ -1,46 +1,66 @@
-name: "Send Email with Mailgun"
-description: |
+title: Send Email with Mailgun
+summary: Send Email with Mailgun
+description: |-
   Send email with Mailgun ( [https://mailgun.com](https://mailgun.com) ).
 
   With the free Mailgun account you can send 10,000 emails/month, 300 emails/day.
 website: https://github.com/bitrise-io/steps-email-with-mailgun
-source:
-  git: https://github.com/bitrise-io/steps-email-with-mailgun.git
+source_code_url: https://github.com/bitrise-io/steps-email-with-mailgun
+support_url: https://github.com/bitrise-io/steps-email-with-mailgun/issues
 host_os_tags:
   - osx-10.9
   - osx-10.10
+project_type_tags: []
 type_tags:
   - email
   - messaging
   - notification
 is_requires_admin_user: false
+is_always_run: true
+is_skippable: false
+dependencies: []
+run_if: ""
 inputs:
-  -
-    mapped_to: MAILGUN_API_KEY
-    title: "Mailgun API Key"
-    is_expand: false
-    is_required: true
-  -
-    mapped_to: MAILGUN_DOMAIN
-    title: "Mailgun Domain"
-    is_expand: false
-    is_required: true
-  -
-    mapped_to: MAILGUN_SEND_TO
-    title: "Send To emails"
-    description: |
-      Comma separated email address list.
-    is_expand: false
-    is_required: true
-  -
-    mapped_to: MAILGUN_EMAIL_SUBJECT
-    title: "Email Subject"
-    is_expand: false
-    is_required: true
-  -
-    mapped_to: MAILGUN_EMAIL_MESSAGE
-    title: "Email Message"
-    description: |
-      The message can be HTML.
-    is_expand: true
-    is_required: true
+  - api_key: ""
+    opts:
+      title: "Mailgun API Key"
+      description:  ""
+      summary: ""
+      is_expand: false
+      is_required: true
+      is_dont_change_value: false
+  - domain: ""
+    opts:
+      title: "Mailgun Domain"
+      description:  ""
+      summary: ""
+      is_expand: false
+      is_required: true
+      is_dont_change_value: false
+  - send_to: ""
+    opts:
+      title: "Send To emails"
+      description: |
+        Comma separated email address list.
+      summary: ""
+      is_expand: false
+      is_required: true
+      is_dont_change_value: false
+  - subject: ""
+    opts:
+      title: "Email Subject"
+      description: ""
+      summary: ""
+      is_expand: false
+      is_required: true
+      is_dont_change_value: false
+  - message: ""
+    opts:
+      title: "Email Message"
+      description: |
+        The message can be HTML.
+      summary: ""
+      is_expand: true
+      is_required: true
+      is_dont_change_value: false
+outputs: []

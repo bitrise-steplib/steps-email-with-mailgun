@@ -13,15 +13,15 @@ function write_section_to_formatted_output {
 }
 
 echo
-echo "MAILGUN_API_KEY: $MAILGUN_API_KEY"
-echo "MAILGUN_DOMAIN: $MAILGUN_DOMAIN"
-echo "MAILGUN_SEND_TO: $MAILGUN_SEND_TO"
-echo "MAILGUN_EMAIL_SUBJECT: $MAILGUN_EMAIL_SUBJECT"
-echo "MAILGUN_EMAIL_MESSAGE: $MAILGUN_EMAIL_MESSAGE"
+echo "api_key: $api_key"
+echo "domain: $domain"
+echo "send_to: $send_to"
+echo "subject: $subject"
+echo "message: $message"
 
 # Required input validation
 # API key
-if [[ ! $MAILGUN_API_KEY ]]; then
+if [[ ! $api_key ]]; then
 	echo
     echo "No API Key provided as environment variable. Terminating..."
     echo
@@ -31,7 +31,7 @@ if [[ ! $MAILGUN_API_KEY ]]; then
 fi
 
 # Domain
-if [[ ! $MAILGUN_DOMAIN ]]; then
+if [[ ! $domain ]]; then
 	echo
     echo "No MailGun Domain provided as environment variable. Terminating..."
     echo
@@ -41,7 +41,7 @@ if [[ ! $MAILGUN_DOMAIN ]]; then
 fi
 
 # send to address
-if [[ ! $MAILGUN_SEND_TO ]]; then
+if [[ ! $send_to ]]; then
 	echo
     echo "No send to address provided as environment variable. Terminating..."
     echo
@@ -51,7 +51,7 @@ if [[ ! $MAILGUN_SEND_TO ]]; then
 fi
 
 # email message
-if [[ ! $MAILGUN_EMAIL_MESSAGE ]]; then
+if [[ ! $message ]]; then
 	echo
     echo "No email message provided as environment variable. Terminating..."
     echo
@@ -63,12 +63,12 @@ fi
 
 ######################
 
-res=$(curl -is --user "api:$MAILGUN_API_KEY" \
-  https://api.mailgun.net/v2/$MAILGUN_DOMAIN/messages \
-  -F from="Bitrise Mailgun Step <postmaster@$MAILGUN_DOMAIN>" \
-  -F to="$MAILGUN_SEND_TO" \
-  -F subject="$MAILGUN_EMAIL_SUBJECT" \
-  --form-string html="$MAILGUN_EMAIL_MESSAGE")
+res=$(curl -is --user "api:$api_key" \
+  https://api.mailgun.net/v2/$domain/messages \
+  -F from="Bitrise Mailgun Step <postmaster@$domain>" \
+  -F to="$send_to" \
+  -F subject="$subject" \
+  --form-string html="$message")
 
 echo
 echo " --- Result ---"
@@ -81,7 +81,7 @@ echo " [i] http_code: $http_code"
 if [ "$http_code" == "200" ]; then
 
   # email subject
-  if [[ ! $MAILGUN_EMAIL_SUBJECT ]]; then
+  if [[ ! $subject ]]; then
     echo
       echo "No email subject provided as environment variable. It is not recommended to send an email without subject."
       echo
@@ -90,9 +90,9 @@ if [ "$http_code" == "200" ]; then
   
   write_section_to_formatted_output "#E-mail successfully sent!"
   write_section_to_formatted_output "### Subject:"
-  write_section_to_formatted_output "${MAILGUN_EMAIL_SUBJECT}"
+  write_section_to_formatted_output "${subject}"
   write_section_to_formatted_output "### Message:"
-  write_section_to_formatted_output "${MAILGUN_EMAIL_MESSAGE}"
+  write_section_to_formatted_output "${message}"
   exit 0
 else
   write_section_to_formatted_output "#Error ${http_code}"
