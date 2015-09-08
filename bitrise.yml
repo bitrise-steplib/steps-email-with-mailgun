@@ -1,0 +1,17 @@
+format_version: 0.9.10
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+app:
+  envs:
+  # define these in your .bitrise.secrets.yml
+  - api_key:
+  - domain:
+  - send_to:
+  - subject:
+  - message:
+
+workflows:
+  test:
+    steps:
+    - path::./:
+        inputs:
