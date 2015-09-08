@@ -54,7 +54,7 @@ inputs:
       is_expand: false
       is_required: true
       is_dont_change_value: false
-  - message: ""
+  - message: "Build finished on Bitrise.io"
     opts:
       title: "Email Message"
       description: |

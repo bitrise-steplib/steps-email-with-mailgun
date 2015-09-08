@@ -7,11 +7,15 @@ app:
   - api_key:
   - domain:
   - send_to:
-  - subject:
-  - message:
 
 workflows:
   test:
     steps:
     - path::./:
         inputs:
+        - subject: Bitrise CLI Test
+        - message: |-
+            Step test - DONE
+            <br>
+            <br>
+            Multiline test
