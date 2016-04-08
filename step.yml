@@ -63,4 +63,14 @@ inputs:
       is_expand: true
       is_required: true
       is_dont_change_value: false
+  - attachements:
+    opts:
+      title: "File attachments"
+      description: |
+        You can post multiple attachments separated with comma.
+        example: image1.jpg, image2.jpg, image3.jpg
+      summary: ""
+      is_expand: true
+      is_required: false
+      is_dont_change_value: false
 outputs: []

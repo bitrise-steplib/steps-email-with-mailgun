@@ -18,6 +18,8 @@ echo "domain: $domain"
 echo "send_to: $send_to"
 echo "subject: $subject"
 echo "message: $message"
+echo "attachements: $attachements"
+eval attachements_array=(${attachements//,/ })
 
 # Required input validation
 # API key
@@ -63,11 +65,21 @@ fi
 
 ######################
 
+attachementRequest=""
+if [[ -n $attachements_array ]]; then
+  for anAttachement in "${attachements_array[@]}"
+  do
+    attachementRequest="$attachementRequest -F attachment=@$anAttachement"
+  done
+fi
+
+
 res=$(curl -is --user "api:$api_key" \
   https://api.mailgun.net/v2/$domain/messages \
   -F from="Bitrise Mailgun Step <postmaster@$domain>" \
   -F to="$send_to" \
   -F subject="$subject" \
+  $attachementRequest \
   --form-string html="$message")
 
 echo
@@ -87,7 +99,7 @@ if [ "$http_code" == "200" ]; then
       echo
       write_section_to_formatted_output "Warning: No email subject provided! It is not recommended to send an email without subject."
   fi
-  
+
   write_section_to_formatted_output "#E-mail successfully sent!"
   write_section_to_formatted_output "### Subject:"
   write_section_to_formatted_output "${subject}"
