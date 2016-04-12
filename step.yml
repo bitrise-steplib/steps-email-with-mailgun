@@ -3,6 +3,14 @@ summary: Send an email using your Mailgun account.
 description: |-
   Send email with Mailgun ( [https://mailgun.com](https://mailgun.com) ).
 
+  How to get step inputs from mailgun?
+
+  - [Sign up](https://mailgun.com/signup) or [Log in](https://mailgun.com/cp) to mailgun.
+  - Go to [Domains](https://mailgun.com/app/domains) and select a domain which one you want to use or create a new one.
+  - On the selected domain's page you can grab the:
+    - `MAILGUN_DOMAIN`'s environment value (sandobox...mailgun.org)
+    - `MAILGUN_API_KEY`'s environment value (key-...)
+
   With the free Mailgun account you can send 10,000 emails/month, 300 emails/day.
 website: https://github.com/bitrise-io/steps-email-with-mailgun
 source_code_url: https://github.com/bitrise-io/steps-email-with-mailgun
@@ -21,56 +29,67 @@ is_skippable: false
 dependencies: []
 run_if: ""
 inputs:
-  - api_key: ""
+  - api_key: "$MAILGUN_API_KEY"
     opts:
       title: "Mailgun API Key"
       description:  ""
       summary: ""
-      is_expand: false
       is_required: true
-      is_dont_change_value: false
-  - domain: ""
+  - domain: "$MAILGUN_DOMAIN"
     opts:
       title: "Mailgun Domain"
       description:  ""
       summary: ""
-      is_expand: false
       is_required: true
-      is_dont_change_value: false
+  - from_email: "Bitrise Mailgun Step <postmaster@$domain>"
+    opts:
+      title: "Email address for From header"
+      description: |
+        Email address for From header
+      summary: ""
+      is_required: true
   - send_to: ""
     opts:
       title: "Send To emails"
       description: |
         Comma separated email address list.
       summary: ""
-      is_expand: false
       is_required: true
-      is_dont_change_value: false
-  - subject: ""
+  - subject: "Build finished"
     opts:
       title: "Email Subject"
       description: ""
       summary: ""
-      is_expand: false
       is_required: true
-      is_dont_change_value: false
-  - message: "Build finished on Bitrise.io"
+  - message: "Build succed on Bitrise.io"
     opts:
       title: "Email Message"
       description: |
-        The message can be HTML.
+        The message can be HTML or plain text.
       summary: ""
-      is_expand: true
       is_required: true
-      is_dont_change_value: false
-  - attachements:
+  - error_message: "Build failed on Bitrise.io"
+    opts:
+      title: "Email Message on build failed"
+      description: |
+        The message can be HTML or plain text.
+      summary: ""
+      is_required: true
+  - message_format: "html"
+    opts:
+      title: "Message format"
+      description: |
+        Message format.
+      summary: ""
+      is_required: true
+      value_options:
+      - "html"
+      - "text"
+  - attachments:
     opts:
       title: "File attachments"
       description: |
         You can post multiple attachments separated with comma.
-        example: image1.jpg, image2.jpg, image3.jpg
+        example: image1.jpg,image2.jpg,image3.jpg
       summary: ""
-      is_expand: true
-      is_required: false
-      is_dont_change_value: false
 outputs: []
