@@ -65,14 +65,14 @@ inputs:
     opts:
       title: "Email Message"
       description: |
-        The message can be HTML.
+        The message can be HTML or plain text.
       summary: ""
       is_required: true
   - error_message: "Build failed on Bitrise.io"
     opts:
       title: "Email Message on build failed"
       description: |
-        The message can be HTML.
+        The message can be HTML or plain text.
       summary: ""
       is_required: true
   - message_format: "html"
@@ -90,6 +90,6 @@ inputs:
       title: "File attachments"
       description: |
         You can post multiple attachments separated with comma.
-        example: image1.jpg, image2.jpg, image3.jpg
+        example: image1.jpg,image2.jpg,image3.jpg
       summary: ""
 outputs: []
