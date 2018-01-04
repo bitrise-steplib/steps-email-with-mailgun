@@ -93,7 +93,7 @@ func isPathExists(pth string) (bool, error) {
 	return isExists, err
 }
 
-func createRequest(url string, fields, files map[string]string) (*http.Request, error) {
+func createRequest(url string, fields map[string]string, attachments []string) (*http.Request, error) {
 	var b bytes.Buffer
 	w := multipart.NewWriter(&b)
 
@@ -105,12 +105,12 @@ func createRequest(url string, fields, files map[string]string) (*http.Request, 
 	}
 
 	// Add files
-	for key, file := range files {
+	for _, file := range attachments {
 		f, err := os.Open(file)
 		if err != nil {
 			return nil, err
 		}
-		fw, err := w.CreateFormFile(key, file)
+		fw, err := w.CreateFormFile("attachment", file)
 		if err != nil {
 			return nil, err
 		}
@@ -201,14 +201,7 @@ func main() {
 		logFail("invalid message_format: %s, available options [html, text]", messageFormat)
 	}
 
-	files := map[string]string{}
-	if len(attachments) > 0 {
-		for _, file := range attachments {
-			files["attachment"] = file
-		}
-	}
-
-	request, err := createRequest(requestURL, fields, files)
+	request, err := createRequest(requestURL, fields, attachments)
 	if err != nil {
 		logFail("Failed to create request, error: %#v", err)
 	}
