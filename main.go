@@ -119,7 +119,9 @@ func createRequest(url string, fields map[string]string, attachments []string) (
 		}
 	}
 
-	w.Close()
+	if err := w.Close(); err != nil {
+		return nil, err
+	}
 
 	req, err := http.NewRequest("POST", url, &b)
 	if err != nil {
@@ -213,7 +215,11 @@ func main() {
 		logFail("Performing request failed, error: %#v", requestErr)
 	}
 
-	defer response.Body.Close()
+	defer func() {
+		if err := response.Body.Close(); err != nil {
+			logWarn("Failed to close response body:", err)
+		}
+	}()
 	contents, readErr := ioutil.ReadAll(response.Body)
 	if readErr != nil {
 		logWarn("Failed to read response body, error: %#v", readErr)
