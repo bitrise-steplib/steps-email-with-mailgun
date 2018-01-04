@@ -14,7 +14,7 @@ app:
   - MESSAGE: $MESSAGE
   - ERROR_MESSAGE: $ERROR_MESSAGE
   - MESSAGE_FORMAT: $MESSAGE_FORMAT
-    #- ATTACHMENTS: $ATTACHMENTS
+  - ATTACHMENTS: $ATTACHMENTS
 
 workflows:
   test:
@@ -42,7 +42,7 @@ workflows:
         - message: $MESSAGE
         - error_message: $ERROR_MESSAGE
         - message_format: $MESSAGE_FORMAT
-          #- attachments: $ATTACHMENTS
+        - attachments: $ATTACHMENTS
 
   go-tests:
     before_run:
