@@ -205,24 +205,24 @@ func main() {
 
 	request, err := createRequest(requestURL, fields, attachments)
 	if err != nil {
-		logFail("Failed to create request, error: %#v", err)
+		logFail("Failed to create request, error: %s", err)
 	}
 	request.SetBasicAuth("api", apiKey)
 
 	client := http.Client{}
 	response, requestErr := client.Do(request)
 	if requestErr != nil {
-		logFail("Performing request failed, error: %#v", requestErr)
+		logFail("Performing request failed, error: %s", requestErr)
 	}
 
 	defer func() {
 		if err := response.Body.Close(); err != nil {
-			logWarn("Failed to close response body:", err)
+			logWarn("Failed to close response body, error: %s", err)
 		}
 	}()
 	contents, readErr := ioutil.ReadAll(response.Body)
 	if readErr != nil {
-		logWarn("Failed to read response body, error: %#v", readErr)
+		logWarn("Failed to read response body, error: %s", readErr)
 	}
 
 	logInfo("response content: %s", contents)

@@ -19,6 +19,7 @@ app:
 workflows:
   test:
     before_run:
+    - audit-this-step
     - go-tests
     steps:
     - script:
@@ -110,7 +111,7 @@ workflows:
   dep-update:
     title: Dep update
     description: |
-      Used for updating bitrise dependencies with dep
+      Used for updating dependencies with dep
     steps:
     - script:
         title: Dependency update
