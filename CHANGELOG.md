@@ -1,6 +1,17 @@
-## Changelog (Current version: 2.1.0)
+## Changelog (Current version: 2.1.1)
 
 -----------------
+
+### 2.1.1 (2018 Jan 08)
+
+* [a0dd83e] Bump version to 2.1.1
+* [f23d3bd] Add note what to do if you don't get the email (#18)
+* [8503147] Merge pull request #17 from bitrise-io/fix/multiple-attachments
+* [58c4053] Minor fixes
+* [aebe710] Fix package name
+* [1025bf0] remove comment
+* [b00c2d7] Set go toolkit
+* [0b26553] Upload all attachments not just the last one
 
 ### 2.1.0 (2016 Apr 12)
 
@@ -48,4 +59,4 @@
 
 -----------------
 
-Updated: 2016 Apr 12
+Updated: 2018 Jan 08
