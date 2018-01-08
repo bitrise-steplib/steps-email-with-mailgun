@@ -93,7 +93,7 @@ func isPathExists(pth string) (bool, error) {
 	return isExists, err
 }
 
-func createRequest(url string, fields, files map[string]string) (*http.Request, error) {
+func createRequest(url string, fields map[string]string, attachments []string) (*http.Request, error) {
 	var b bytes.Buffer
 	w := multipart.NewWriter(&b)
 
@@ -105,12 +105,12 @@ func createRequest(url string, fields, files map[string]string) (*http.Request, 
 	}
 
 	// Add files
-	for key, file := range files {
+	for _, file := range attachments {
 		f, err := os.Open(file)
 		if err != nil {
 			return nil, err
 		}
-		fw, err := w.CreateFormFile(key, file)
+		fw, err := w.CreateFormFile("attachment", file)
 		if err != nil {
 			return nil, err
 		}
@@ -119,7 +119,9 @@ func createRequest(url string, fields, files map[string]string) (*http.Request, 
 		}
 	}
 
-	w.Close()
+	if err := w.Close(); err != nil {
+		return nil, err
+	}
 
 	req, err := http.NewRequest("POST", url, &b)
 	if err != nil {
@@ -201,29 +203,26 @@ func main() {
 		logFail("invalid message_format: %s, available options [html, text]", messageFormat)
 	}
 
-	files := map[string]string{}
-	if len(attachments) > 0 {
-		for _, file := range attachments {
-			files["attachment"] = file
-		}
-	}
-
-	request, err := createRequest(requestURL, fields, files)
+	request, err := createRequest(requestURL, fields, attachments)
 	if err != nil {
-		logFail("Failed to create request, error: %#v", err)
+		logFail("Failed to create request, error: %s", err)
 	}
 	request.SetBasicAuth("api", apiKey)
 
 	client := http.Client{}
 	response, requestErr := client.Do(request)
 	if requestErr != nil {
-		logFail("Performing request failed, error: %#v", requestErr)
+		logFail("Performing request failed, error: %s", requestErr)
 	}
 
-	defer response.Body.Close()
+	defer func() {
+		if err := response.Body.Close(); err != nil {
+			logWarn("Failed to close response body, error: %s", err)
+		}
+	}()
 	contents, readErr := ioutil.ReadAll(response.Body)
 	if readErr != nil {
-		logWarn("Failed to read response body, error: %#v", readErr)
+		logWarn("Failed to read response body, error: %s", readErr)
 	}
 
 	logInfo("response content: %s", contents)
