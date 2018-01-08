@@ -12,6 +12,8 @@ description: |-
     - `MAILGUN_API_KEY`'s environment value (key-...)
 
   With the free Mailgun account you can send 10,000 emails/month, 300 emails/day.
+
+  If you don't get the email check your spam folder and your mailgun log on `Logs` tab after you logged in.
 website: https://github.com/bitrise-io/steps-email-with-mailgun
 source_code_url: https://github.com/bitrise-io/steps-email-with-mailgun
 support_url: https://github.com/bitrise-io/steps-email-with-mailgun/issues
