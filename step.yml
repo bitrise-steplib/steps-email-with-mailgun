@@ -61,19 +61,24 @@ inputs:
       title: "Send To emails"
       description: |
         Comma separated email address list.
-      summary: ""
+      summary: "
       is_required: true
-  - subject: "Build finished"
+  - subject: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER finished"
     opts:
       title: "Email Subject"
       description: ""
       summary: ""
       is_required: true
-  - message: "Build succed on Bitrise.io"
+  - message: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER succeeded on Bitrise.io"
     opts:
       title: "Email Message"
       description: |
-        The message can be HTML or plain text.
+        Build succeeded!
+        Title: $BITRISE_APP_TITLE 
+        Triggered by: $BITRISE_GIT_BRANCH
+        Message: $BITRISE_GIT_MESSAGE
+        Build number: $BITRISE_BUILD_NUMBER
+        Build Url: $BITRISE_BUILD_URL
       summary: ""
       is_required: true
   - error_message: "Build failed on Bitrise.io"
