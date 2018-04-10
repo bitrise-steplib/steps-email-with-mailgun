@@ -63,20 +63,20 @@ inputs:
         Comma separated email address list.
       summary: ""
       is_required: true
-  - subject: "Build finished"
+  - subject: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER finished"
     opts:
       title: "Email Subject"
       description: ""
       summary: ""
       is_required: true
-  - message: "Build succed on Bitrise.io"
+  - message: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER succeeded on Bitrise.io"
     opts:
       title: "Email Message"
       description: |
         The message can be HTML or plain text.
       summary: ""
       is_required: true
-  - error_message: "Build failed on Bitrise.io"
+  - error_message: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER failed on Bitrise.io"
     opts:
       title: "Email Message on build failed"
       description: |
