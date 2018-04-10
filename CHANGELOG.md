@@ -1,6 +1,11 @@
-## Changelog (Current version: 2.1.1)
+## Changelog (Current version: 2.1.2)
 
 -----------------
+
+### 2.1.2 (2018 Apr 10)
+
+* [1ca1e4d] Prepare for version 2.1.2
+* [2caebd9] Update step.yml (#19)
 
 ### 2.1.1 (2018 Jan 08)
 
@@ -59,4 +64,4 @@
 
 -----------------
 
-Updated: 2018 Jan 08
+Updated: 2018 Apr 10
