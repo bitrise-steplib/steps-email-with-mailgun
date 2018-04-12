@@ -1,6 +1,10 @@
-## Changelog (Current version: 2.1.2)
+## Changelog (Current version: 2.1.3)
 
 -----------------
+
+### 2.1.3 (2018 Apr 12)
+
+* [bc3c4c7] Prepare for 2.1.3
 
 ### 2.1.2 (2018 Apr 10)
 
@@ -64,4 +68,4 @@
 
 -----------------
 
-Updated: 2018 Apr 10
+Updated: 2018 Apr 12
