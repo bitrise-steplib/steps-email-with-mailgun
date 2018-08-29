@@ -43,12 +43,14 @@ inputs:
       description:  ""
       summary: ""
       is_required: true
+      is_sensitive: true
   - domain: "$MAILGUN_DOMAIN"
     opts:
       title: "Mailgun Domain"
       description:  ""
       summary: ""
       is_required: true
+      is_sensitive: true
   - from_email: "Bitrise Mailgun Step <postmaster@$domain>"
     opts:
       title: "Email address for From header"
@@ -56,6 +58,7 @@ inputs:
         Email address for From header
       summary: ""
       is_required: true
+      is_sensitive: true
   - send_to: ""
     opts:
       title: "Send To emails"
@@ -63,6 +66,7 @@ inputs:
         Comma separated email address list.
       summary: ""
       is_required: true
+      is_sensitive: true
   - subject: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER finished"
     opts:
       title: "Email Subject"
