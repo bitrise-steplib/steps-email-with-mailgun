@@ -142,6 +142,7 @@ func main() {
 	// Validate options
 	logInfo("Configs:")
 	logDetails("api_key: %s", os.Getenv("api_key"))
+	logDetails("api_endpoint: %s", os.Getenv("api_endpoint"))
 	logDetails("domain: %s", os.Getenv("domain"))
 	logDetails("from_email: %s", os.Getenv("from_email"))
 	logDetails("send_to: %s", os.Getenv("send_to"))
@@ -152,6 +153,7 @@ func main() {
 	logDetails("attachments: %s", os.Getenv("attachments"))
 
 	apiKey := validateRequiredInput("api_key")
+	apiEndpoint := validateRequiredInput("api_endpoint")
 	domain := validateRequiredInput("domain")
 	fromEmail := validateRequiredInput("from_email")
 	sendTo := validateRequiredInput("send_to")
@@ -186,7 +188,7 @@ func main() {
 	// Create request
 	logInfo("Performing request")
 
-	requestURL := fmt.Sprintf("https://api.mailgun.net/v2/%s/messages", domain)
+	requestURL := fmt.Sprintf("https://%s/v2/%s/messages", apiEndpoint, domain)
 
 	fields := map[string]string{
 		"from":    fromEmail,

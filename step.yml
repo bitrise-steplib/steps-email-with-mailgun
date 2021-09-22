@@ -44,6 +44,16 @@ inputs:
       summary: ""
       is_required: true
       is_sensitive: true
+  - api_endpoint: "api.mailgun.net"
+    opts:
+      title: "Mailgun API Endpoint"
+      description: |
+        Defaults to US (api.mailgun.net)
+      summary: ""
+      is_required: true
+      value_options:
+      - "api.mailgun.net"
+      - "api.eu.mailgun.net"
   - domain: "$MAILGUN_DOMAIN"
     opts:
       title: "Mailgun Domain"
