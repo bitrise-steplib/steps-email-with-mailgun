@@ -104,7 +104,7 @@ workflows:
             go get -u -v github.com/kisielk/errcheck
 
             # Go lint
-            go get -u -v github.com/golang/lint/golint
+            go get -u -v golang.org/x/lint/golint
 
   # ----------------------------------------------------------------
   # --- Utility workflows
