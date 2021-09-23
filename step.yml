@@ -49,7 +49,6 @@ inputs:
       title: "Mailgun API Endpoint"
       description: |-
         Defaults to US (api.mailgun.net)
-      summary: ""
       is_required: true
       value_options:
       - "api.mailgun.net"
@@ -66,7 +65,6 @@ inputs:
       title: "Email address for From header"
       description: |-
         Email address for From header
-      summary: ""
       is_required: true
       is_sensitive: true
   - send_to: ""
@@ -74,35 +72,30 @@ inputs:
       title: "Send To emails"
       description: |-
         Comma separated email address list.
-      summary: ""
       is_required: true
       is_sensitive: true
   - subject: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER finished"
     opts:
       title: "Email Subject"
       description: ""
-      summary: ""
       is_required: true
   - message: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER succeeded on Bitrise.io"
     opts:
       title: "Email Message"
       description: |-
         The message can be HTML or plain text.
-      summary: ""
       is_required: true
   - error_message: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER failed on Bitrise.io"
     opts:
       title: "Email Message on build failed"
       description: |-
         The message can be HTML or plain text.
-      summary: ""
       is_required: true
   - message_format: "html"
     opts:
       title: "Message format"
       description: |-
         Message format.
-      summary: ""
       is_required: true
       value_options:
       - "html"
@@ -113,5 +106,4 @@ inputs:
       description: |-
         You can post multiple attachments separated with commas.
         example: image1.jpg,image2.jpg,image3.jpg
-      summary: ""
 outputs: []
