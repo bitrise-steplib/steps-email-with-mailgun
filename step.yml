@@ -48,9 +48,9 @@ inputs:
     opts:
       title: "Mailgun API Endpoint"
       description: |-
-        The API endpoint to be used with Mailgun: US or EU. 
+        The API endpoint to be used with Mailgun: US or EU.
 
-		The default value is the US endpoint (api.mailgun.net).
+        The default value is the US endpoint (api.mailgun.net).
       is_required: true
       value_options:
       - "api.mailgun.net"
