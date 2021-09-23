@@ -44,6 +44,17 @@ inputs:
       summary: ""
       is_required: true
       is_sensitive: true
+  - api_endpoint: "api.mailgun.net"
+    opts:
+      title: "Mailgun API Endpoint"
+      description: |-
+        The API endpoint to be used with Mailgun: US or EU.
+
+        The default value is the US endpoint (api.mailgun.net).
+      is_required: true
+      value_options:
+      - "api.mailgun.net"
+      - "api.eu.mailgun.net"
   - domain: "$MAILGUN_DOMAIN"
     opts:
       title: "Mailgun Domain"
@@ -54,45 +65,39 @@ inputs:
   - from_email: "Bitrise Mailgun Step <postmaster@$domain>"
     opts:
       title: "Email address for From header"
-      description: |
+      description: |-
         Email address for From header
-      summary: ""
       is_required: true
       is_sensitive: true
   - send_to: ""
     opts:
       title: "Send To emails"
-      description: |
+      description: |-
         Comma separated email address list.
-      summary: ""
       is_required: true
       is_sensitive: true
   - subject: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER finished"
     opts:
       title: "Email Subject"
       description: ""
-      summary: ""
       is_required: true
   - message: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER succeeded on Bitrise.io"
     opts:
       title: "Email Message"
-      description: |
+      description: |-
         The message can be HTML or plain text.
-      summary: ""
       is_required: true
   - error_message: "$BITRISE_APP_TITLE Build $BITRISE_BUILD_NUMBER failed on Bitrise.io"
     opts:
       title: "Email Message on build failed"
-      description: |
+      description: |-
         The message can be HTML or plain text.
-      summary: ""
       is_required: true
   - message_format: "html"
     opts:
       title: "Message format"
-      description: |
+      description: |-
         Message format.
-      summary: ""
       is_required: true
       value_options:
       - "html"
@@ -100,8 +105,7 @@ inputs:
   - attachments:
     opts:
       title: "File attachments"
-      description: |
+      description: |-
         You can post multiple attachments separated with commas.
         example: image1.jpg,image2.jpg,image3.jpg
-      summary: ""
 outputs: []

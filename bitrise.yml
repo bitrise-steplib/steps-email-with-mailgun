@@ -6,6 +6,7 @@ app:
   - ORIG_BITRISE_SOURCE_DIR: $BITRISE_SOURCE_DIR
   # define these in your .bitrise.secrets.yml
   - MAILGUN_API_KEY: $MAILGUN_API_KEY
+  - MAILGUN_API_ENDPOINT: $MAILGUN_API_ENDPOINT
   - MAILGUN_DOMAIN: $MAILGUN_DOMAIN
   - FROM_EMAIL: $FROM_EMAIL
   - SEND_TO: $SEND_TO
@@ -103,7 +104,7 @@ workflows:
             go get -u -v github.com/kisielk/errcheck
 
             # Go lint
-            go get -u -v github.com/golang/lint/golint
+            go get -u -v golang.org/x/lint/golint
 
   # ----------------------------------------------------------------
   # --- Utility workflows
