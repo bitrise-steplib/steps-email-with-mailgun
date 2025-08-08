@@ -188,7 +188,7 @@ func main() {
 	// Create request
 	logInfo("Performing request")
 
-	requestURL := fmt.Sprintf("https://%s/v2/%s/messages", apiEndpoint, domain)
+	requestURL := fmt.Sprintf("https://%s/v3/%s/messages", apiEndpoint, domain)
 
 	fields := map[string]string{
 		"from":    fromEmail,
